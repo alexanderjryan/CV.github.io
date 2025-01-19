@@ -96,7 +96,7 @@
 
        <div class="card">
           <div class="work-experience">
-              <h3>Scrobble Full Albums</h3>
+              <h3>Scrobble Full Albums on Last.fm</h3>
               
               <!-- Form to input artist and album -->
               <form id="scrobbleForm">
@@ -150,21 +150,27 @@
 
       // Call your backend to scrobble the album (this is a placeholder)
       fetch('https://gifted-symbol-448321-t5.uw.r.appspot.com/scrobble', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ artist: artist, album: album })
-      })
-      .then(response => response.json())
-      .then(data => {
-        resultContainer.style.display = 'block';
-        resultMessage.innerHTML = `Successfully scrobbled ${data.trackCount} tracks from '${data.album}' by ${data.artist}!`;
-      })
-      .catch(error => {
-        resultContainer.style.display = 'block';
-        resultMessage.innerHTML = 'An error occurred while scrobbling the album. Please try again.';
-      });
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ artist: artist, album: album })
+})
+.then(response => response.json())
+.then(data => {
+  resultContainer.style.display = 'block';
+  if (data.status === 'success') {
+    resultMessage.innerHTML = `Successfully scrobbled ${data.message}`;  // Show the success message from the backend
+  } else {
+    resultMessage.innerHTML = data.message;  // Show the error message from the backend
+  }
+})
+.catch(error => {
+  resultContainer.style.display = 'block';
+  resultMessage.innerHTML = 'An error occurred while scrobbling the album. Please try again.';
+  console.error('Error:', error);
+});
+    
     });
   });
 </script>
