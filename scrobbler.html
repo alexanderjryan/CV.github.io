@@ -1,3 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <meta name="google" content="notranslate" />
+  <meta property="og:title" content="Alexander J. Ryan Website - Scrobble Music"/>
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://alexanderryan.site/scrobble.html" />
+  <meta property="og:description" content="Scrobble your favorite songs from Last.fm directly from this page."/>
+  <meta property="og:image" content="https://latenightscholarships.com/assets/images/alexryan.jpg" />
+  <meta property="og:image:secure_url" content="https://latenightscholarships.com/assets/images/alexryan.jpg" />
+  <meta property="og:image:type" content="image/jpg"/>
+  <meta property="og:image:width" content="900"/>
+  <meta property="og:image:height" content="1277"/>
+  <meta name="msapplication-tap-highlight" content="no">
+  
+  <link rel="me-icon" sizes="180x180" href="./assets/images/me_icon.svg">
+  <link href="./assets/favicon.ico" rel="icon">
+  <title>Scrobble Music on Last.fm</title>  
+  <link href="./main.d8e0d294.css" rel="stylesheet">
+  
+  <style>
+    .card {
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .form-group input {
+      padding: 10px;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .form-group button {
+      padding: 10px 15px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+    
+    .login-button {
+      padding: 10px 15px;
+      background-color: #1DB954; /* Spotify green-like color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .login-button:hover {
+      background-color: #1AA34A;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Header Section -->
+<div class="background-color-layer"></div>
+<main class="content-wrapper">
+  <header class="white-text-container section-container">
+    <div class="text-center">
+      <h1>Scrobble Music</h1>
+      <p>Enter artist and album details to scrobble tracks on Last.fm</p>
+
+      <div class="collapse navbar-collapse text-center" id="navbar-collapse-uarr">
+        <ul class="nav navbar-nav navbar-center">
+          <li><a href="./index.html" title="" class="active">Home</a></li>
+          <li><a href="./Certifications.html" title="">Certifications</a></li>
+          <li><a href="./Work" title="">Professional Experience</a></li>
+          <li><a href="./Alexander%20Ryan%20CV%20(1_6_25).pdf" title="">CV</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+</main>
+</div>
+
+<!-- Login Button Section -->
+<div class="form-group">
+         <!-- The link here should take you to your Google Cloud login page -->
+         <a href="https://gifted-symbol-448321-t5.uw.r.appspot.com/login">
+           <button type="button">Login with Last.fm</button>
+         </a>
+       </div>
+
 <!-- Scrobble Music Form Section -->
 <div class="container">
    <div class="row">
@@ -17,15 +126,6 @@
                   <label for="albumInput">Album Name</label>
                   <input type="text" id="albumInput" class="form-control" placeholder="Enter album name" required>
                 </div>
-
-               <!-- Login Button: Place it right above the scrobble button -->
-                <div class="form-group">
-                  <a href="https://gifted-symbol-448321-t5.uw.r.appspot.com/login">
-                    <button type="button">Login with Last.fm</button>
-                  </a>
-                </div>
-
-            <!-- Scrobble Album Button -->
                 <div class="form-group">
                   <button type="submit">Scrobble Album</button>
                 </div>
@@ -35,17 +135,63 @@
               <div id="resultContainer" style="display:none;">
                 <h4 id="resultMessage"></h4>
               </div>
-                
           </div>
        </div>
 
-       <!-- Login Button -->
-       <div class="form-group">
-         <!-- The link here should take you to your Google Cloud login page -->
-         <a href="https://gifted-symbol-448321-t5.uw.r.appspot.com/login">
-           <button type="button">Login with Last.fm</button>
-         </a>
-       </div>
      </div>
    </div>
 </div>
+
+<!-- Footer Section -->
+<footer class="footer-container white-text-container text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p><img src="./assets/images/me_icon.svg" alt=""></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript for handling form submission and login -->
+<script>
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const scrobbleForm = document.getElementById("scrobbleForm");
+    const resultContainer = document.getElementById("resultContainer");
+    const resultMessage = document.getElementById("resultMessage");
+
+    scrobbleForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      
+      const artist = document.getElementById("artistInput").value;
+      const album = document.getElementById("albumInput").value;
+
+      // Call your backend to scrobble the album
+      fetch('https://gifted-symbol-448321-t5.uw.r.appspot.com/scrobble', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ artist: artist, album: album })
+      })
+      .then(response => response.json())
+      .then(data => {
+        resultContainer.style.display = 'block';
+        if (data.status === 'success') {
+          resultMessage.innerHTML = `Successfully scrobbled ${data.message}`;
+        } else {
+          resultMessage.innerHTML = data.message;
+        }
+      })
+      .catch(error => {
+        resultContainer.style.display = 'block';
+        resultMessage.innerHTML = 'An error occurred while scrobbling the album. Please try again.';
+        console.error('Error:', error);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
