@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta content="IE=edge" http-equiv="X-UA-Compatible">
   <meta content="width=device-width,initial-scale=1" name="viewport">
-
   <meta name="google" content="notranslate" />
   <meta property="og:title" content="Alexander J. Ryan Website - Scrobble Music"/>
   <meta property="og:type" content="website" />
@@ -16,22 +15,19 @@
   <meta property="og:image:type" content="image/jpg"/>
   <meta property="og:image:width" content="900"/>
   <meta property="og:image:height" content="1277"/>
-  
   <meta name="msapplication-tap-highlight" content="no">
   
   <link rel="me-icon" sizes="180x180" href="./assets/images/me_icon.svg">
   <link href="./assets/favicon.ico" rel="icon">
-
   <title>Scrobble Music on Last.fm</title>  
-
   <link href="./main.d8e0d294.css" rel="stylesheet">
   
   <style>
     .card {
-      padding: 15px; /* Adds space inside the card */
-      margin-bottom: 20px; /* Adds space between cards */
-      border: 1px solid #ccc; /* Optional: Add a border to make the margin/padding visible */
-      border-radius: 5px; /* Optional: Rounded corners */
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
     }
 
     .form-group {
@@ -63,6 +59,20 @@
     .form-group button:hover {
       background-color: #45a049;
     }
+    
+    .login-button {
+      padding: 10px 15px;
+      background-color: #1DB954; /* Spotify green-like color */
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .login-button:hover {
+      background-color: #1AA34A;
+    }
   </style>
 </head>
 
@@ -87,6 +97,11 @@
     </div>
   </header>
 </main>
+</div>
+
+<!-- Login Button Section -->
+<div class="container text-center">
+  <button class="login-button" onclick="loginWithLastFM()">Login with Last.fm</button>
 </div>
 
 <!-- Scrobble Music Form Section -->
@@ -135,8 +150,13 @@
   </div>
 </footer>
 
-<!-- JavaScript for handling form submission -->
+<!-- JavaScript for handling form submission and login -->
 <script>
+  function loginWithLastFM() {
+    // Redirect the user to the Last.fm authorization URL
+    window.location.href = '/login';  // This should trigger the OAuth flow on the backend
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const scrobbleForm = document.getElementById("scrobbleForm");
     const resultContainer = document.getElementById("resultContainer");
@@ -148,29 +168,28 @@
       const artist = document.getElementById("artistInput").value;
       const album = document.getElementById("albumInput").value;
 
-      // Call your backend to scrobble the album (this is a placeholder)
+      // Call your backend to scrobble the album
       fetch('https://gifted-symbol-448321-t5.uw.r.appspot.com/scrobble', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ artist: artist, album: album })
-})
-.then(response => response.json())
-.then(data => {
-  resultContainer.style.display = 'block';
-  if (data.status === 'success') {
-    resultMessage.innerHTML = `Successfully scrobbled ${data.message}`;  // Show the success message from the backend
-  } else {
-    resultMessage.innerHTML = data.message;  // Show the error message from the backend
-  }
-})
-.catch(error => {
-  resultContainer.style.display = 'block';
-  resultMessage.innerHTML = 'An error occurred while scrobbling the album. Please try again.';
-  console.error('Error:', error);
-});
-    
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ artist: artist, album: album })
+      })
+      .then(response => response.json())
+      .then(data => {
+        resultContainer.style.display = 'block';
+        if (data.status === 'success') {
+          resultMessage.innerHTML = `Successfully scrobbled ${data.message}`;
+        } else {
+          resultMessage.innerHTML = data.message;
+        }
+      })
+      .catch(error => {
+        resultContainer.style.display = 'block';
+        resultMessage.innerHTML = 'An error occurred while scrobbling the album. Please try again.';
+        console.error('Error:', error);
+      });
     });
   });
 </script>
