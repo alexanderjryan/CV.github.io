@@ -160,8 +160,18 @@
     const scrobbleForm = document.getElementById("scrobbleForm");
     const resultContainer = document.getElementById("resultContainer");
     const resultMessage = document.getElementById("resultMessage");
+    const loginStatusElement = document.getElementById("login-status");
 
-    scrobbleForm.addEventListener("submit", function (event) {
+    // Check if 'login' query parameter exists and is 'success'
+    const urlParams = new URLSearchParams(window.location.search);
+    const loginStatus = urlParams.get('login');
+
+    if (loginStatus === 'success') {
+      // Display "Login complete" next to the button
+      loginStatusElement.innerText = 'Login complete';
+    }
+      
+      scrobbleForm.addEventListener("submit", function (event) {
       event.preventDefault();
       
       const artist = document.getElementById("artistInput").value;
