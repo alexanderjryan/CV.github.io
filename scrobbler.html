@@ -73,6 +73,13 @@
     .login-button:hover {
       background-color: #1AA34A;
     }
+
+    /* Styling for the 'Login complete' message */
+    .login-status {
+      font-size: 16px;
+      color: green;
+      margin-left: 10px;
+    }
   </style>
 </head>
 
@@ -99,14 +106,6 @@
 </main>
 </div>
 
-<!-- Login Button Section -->
-<div class="form-group">
-         <!-- The link here should take you to your Google Cloud login page -->
-         <a href="https://gifted-symbol-448321-t5.uw.r.appspot.com/login">
-           <button type="button">Login with Last.fm</button>
-         </a>
-       </div>
-
 <!-- Scrobble Music Form Section -->
 <div class="container">
    <div class="row">
@@ -116,6 +115,16 @@
           <div class="work-experience">
               <h3>Scrobble Full Albums on Last.fm</h3>
               
+              <!-- Login Button Section -->
+              <div class="form-group">
+                 <!-- The link here should take you to your Google Cloud login page -->
+                 <a href="https://gifted-symbol-448321-t5.uw.r.appspot.com/login">
+                   <button type="button" class="login-button">Login with Last.fm</button>
+                 </a>
+                 <!-- Add a div to display the login status -->
+                 <span id="login-status" class="login-status"></span>
+              </div>
+
               <!-- Form to input artist and album -->
               <form id="scrobbleForm">
                 <div class="form-group">
@@ -170,8 +179,8 @@
       // Display "Login complete" next to the button
       loginStatusElement.innerText = 'Login complete';
     }
-      
-      scrobbleForm.addEventListener("submit", function (event) {
+
+    scrobbleForm.addEventListener("submit", function (event) {
       event.preventDefault();
       
       const artist = document.getElementById("artistInput").value;
@@ -201,6 +210,7 @@
       });
     });
   });
+
 </script>
 
 </body>
