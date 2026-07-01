@@ -20,3 +20,31 @@ body {
 .background-color-layer {
   box-shadow: inset 0 -40px 60px 10px #6f7357;
 }
+/* Job market homepage callout */
+.job-market-callout {
+  background: #f4f0df;
+  border-left: 6px solid #6f7357;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+.job-market-label {
+  display: inline-block;
+  background: #6f7357;
+  color: #ffffff;
+  font-family: Oswald, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.job-market-callout p {
+  margin-bottom: 0;
+  font-size: 18px;
+  color: #333333;
+}
