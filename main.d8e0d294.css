@@ -10,13 +10,13 @@
 
 /* Sitewide background color override */
 body {
-  background-image: -webkit-linear-gradient(top, #b66a7a, #e2a6ad);
-  background-image: -o-linear-gradient(top, #b66a7a 0, #e2a6ad 100%);
-  background-image: linear-gradient(180deg, #b66a7a 0, #e2a6ad);
+  background-image: -webkit-linear-gradient(top, #6f7357, #a8ad85);
+  background-image: -o-linear-gradient(top, #6f7357 0, #a8ad85 100%);
+  background-image: linear-gradient(180deg, #6f7357 0, #a8ad85);
   background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FFB66A7A", endColorstr="#FFE2A6AD", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#FF6F7357", endColorstr="#FFA8AD85", GradientType=0);
 }
 
 .background-color-layer {
-  box-shadow: inset 0 -40px 60px 10px #b66a7a;
+  box-shadow: inset 0 -40px 60px 10px #6f7357;
 }
