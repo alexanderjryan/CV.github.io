@@ -27,146 +27,114 @@
   <title>Alexander Ryan's Webpage</title>  
 
   <link href="./main.d8e0d294.css" rel="stylesheet">
+
   <style>
+    /* Responsive site navigation */
+    .site-navbar {
+      position: relative;
+      margin-top: 15px;
+    }
+
+    .navbar-menu {
+      display: block;
+    }
+
     .navbar-center {
       display: flex;
       justify-content: center;
-    }
-
-    .navbar-nav {
-      display: flex;
-      justify-content: center;
-      list-style-type: none;
+      flex-wrap: wrap;
+      float: none;
+      margin: 0;
       padding: 0;
+      list-style: none;
     }
 
-    .navbar-nav li {
+    .navbar-center > li {
+      float: none;
       margin: 0 10px;
     }
-  </style>
-</head>
 
-  <style>
-  .navbar-center {
-    display: flex;
-    justify-content: center;
-  }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .navbar-nav li {
-    margin: 0 10px;
-  }
-
-  /* What's New timeline */
-  .timeline-scroll {
-    max-height: 360px;
-    overflow-y: auto;
-    margin-top: 20px;
-    padding-right: 12px;
-  }
-
-  .timeline {
-    position: relative;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 135px;
-  }
-
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 110px;
-    width: 2px;
-    background-color: #d7d7d7;
-  }
-
-  .timeline li {
-    position: relative;
-    margin-bottom: 24px;
-    min-height: 30px;
-  }
-
-  .timeline li:last-child {
-    margin-bottom: 0;
-  }
-
-  .timeline li::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: -30px;
-    width: 12px;
-    height: 12px;
-    background-color: #ffffff;
-    border: 3px solid #424242;
-    border-radius: 50%;
-    box-sizing: border-box;
-  }
-
-  .tl-date {
-    position: absolute;
-    top: 0;
-    left: -135px;
-    width: 95px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #424242;
-    text-align: right;
-  }
-
-  .timeline p {
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .timeline a {
-    text-decoration: underline;
-  }
-
-  .timeline-scroll::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  .timeline-scroll::-webkit-scrollbar-thumb {
-    background-color: #bdbdbd;
-    border-radius: 8px;
-  }
-
-  .timeline-scroll::-webkit-scrollbar-track {
-    background-color: #f3f3f3;
-  }
-
-  @media (max-width: 600px) {
-    .timeline {
-      padding-left: 25px;
-    }
-
-    .timeline::before {
-      left: 5px;
-    }
-
-    .timeline li::before {
-      left: -25px;
-    }
-
-    .tl-date {
-      position: static;
+    .navbar-center > li > a {
       display: block;
-      width: auto;
-      margin-bottom: 5px;
-      text-align: left;
+      padding: 8px 4px;
+      color: #ffffff;
     }
-  }
-</style>
-  
+
+    .navbar-center > li > a:hover,
+    .navbar-center > li > a:focus,
+    .navbar-center > li > a.active {
+      color: #ffffff;
+      background: transparent;
+      text-decoration: underline;
+    }
+
+    .site-menu-toggle {
+      display: none;
+      width: 48px;
+      min-height: 42px;
+      margin: 12px auto 0;
+      padding: 9px 11px;
+      color: #ffffff;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .site-menu-toggle:focus {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
+
+    .site-menu-toggle .icon-bar {
+      display: block;
+      width: 24px;
+      height: 2px;
+      margin: 4px auto;
+      background-color: #ffffff;
+      border-radius: 1px;
+    }
+
+    @media (max-width: 767px) {
+      .site-menu-toggle {
+        display: block;
+      }
+
+      .navbar-menu {
+        display: none;
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .navbar-menu.is-open {
+        display: block;
+      }
+
+      .navbar-center {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .navbar-center > li {
+        width: 100%;
+        margin: 0;
+      }
+
+      .navbar-center > li > a {
+        width: 100%;
+        padding: 11px 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        text-align: center;
+      }
+
+      .navbar-center > li:last-child > a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+      }
+    }
+  </style>
+
+</head>
 <body class="">
   <!-- Add your content of header -->
   <div class="background-color-layer"></div>
@@ -177,41 +145,48 @@
         <h1>Welcome to my Webpage!</h1>
         <p>PhD Candidate at Ohio State University</p>
 
-<nav class="site-navbar" aria-label="Main navigation">
+        <nav class="site-navbar" aria-label="Main navigation">
+          <button
+            class="site-menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="navbar-collapse-uarr"
+            aria-label="Open navigation menu"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar" aria-hidden="true"></span>
+            <span class="icon-bar" aria-hidden="true"></span>
+            <span class="icon-bar" aria-hidden="true"></span>
+          </button>
 
-  <button
-    class="navbar-toggle"
-    type="button"
-    aria-expanded="false"
-    aria-controls="navbar-collapse-uarr"
-    aria-label="Open navigation menu"
-  >
-    <span class="navbar-toggle-icon"></span>
-    <span class="navbar-toggle-icon"></span>
-    <span class="navbar-toggle-icon"></span>
-  </button>
-
-  <div class="navbar-menu text-center" id="navbar-collapse-uarr">
-    <ul class="nav navbar-nav navbar-center">
-      <li><a href="./index.html" class="active">Home</a></li>
-      <li><a href="./Research.html">Research</a></li>
-      <li><a href="./Teaching.html">Teaching</a></li>
-      <li><a href="./Certifications.html">Certifications</a></li>
-      <li><a href="./Work.html">Professional Experience</a></li>
-      <li>
-        <a href="./Alexander_Ryan_CV_(07_14_26).pdf" target="_blank">
-          CV
-        </a>
-      </li>
-      <li>
-        <a href="./Resume_Alexander_Ryan_063026.pdf" target="_blank">
-          Resume
-        </a>
-      </li>
-    </ul>
-  </div>
-
-</nav>
+          <div class="navbar-menu" id="navbar-collapse-uarr">
+            <ul class="nav navbar-nav navbar-center">
+              <li>
+                <a href="./index.html" class="active" aria-current="page">Home</a>
+              </li>
+              <li><a href="./Research.html">Research</a></li>
+              <li><a href="./Teaching.html">Teaching</a></li>
+              <li><a href="./Certifications.html">Certifications</a></li>
+              <li><a href="./Work.html">Professional Experience</a></li>
+              <li>
+                <a
+                  href="./Alexander_Ryan_CV_(07_14_26).pdf"
+                  target="_blank"
+                  rel="noopener"
+                >CV</a>
+              </li>
+              <li>
+                <a
+                  href="./Resume_Alexander_Ryan_063026.pdf"
+                  target="_blank"
+                  rel="noopener"
+                >Resume</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
 
     <!-- Add your site or app content here -->
     <div class="container">
@@ -223,7 +198,7 @@
 
               <div class="row">
                 <div class="col-md-4">
-                  <p>
+                  </p>
                     <img src="assets/images/Alex_Ryan_Profile_Picture.jpg" class="img-responsive" alt="">
                   </p>
                 </div>
@@ -232,30 +207,30 @@
 
                   <div class="job-market-callout">
                     <span class="job-market-label">On the Job Market</span>
-                    <p>
+                    </p>
                       I am a PhD candidate in Applied Economics at Ohio State University.
                     </p>
                   </div>
 
-                  <p>
+                  </p>
                     My research is at the intersection of regional, financial, real estate, and climate change economics. My ongoing projects use empirical and structural approaches at the frontier of staggered difference-in-differences and Spatial Equilibrium modeling.
                   </p>
 
-                  <p>
+                  </p>
                     For those interested in connecting, I will be attending the 2026 AAEA conference in Kansas City and am open to meeting.
                   </p>
 
-                  <p>
+                  </p>
                     Augmenting my academic research, I am a frequent panelist, coauthor, and consultant for the American Bankers Association's
                     <a href="https://www.aba.com/news-research/economic-insights/chief-economist">Office of the Chief Economist</a>
                     on the residential housing market, insights from the Home Mortgage Disclosure Act releases, and climate-related financial risks.
                   </p>
 
-                  <p>
+                  </p>
                     I graduated from John Carroll University in January 2019 with dual majors in economics and finance. Before joining OSU, I interned at the Federal Reserve Bank of Cleveland and spent 3 years as a senior associate on KPMG Chicago's Economic & Valuation Services team.
                   </p>
 
-                  <p>
+                  </p>
                     When I am away from the office, I enjoy visiting the Columbus Park of Roses,
                     <a href="https://www.discogs.com/user/alexjesse1997/collection">listening to records</a>,
                     playing disc golf or volleyball,
@@ -267,134 +242,12 @@
               </div>
             </div>
           </div>
-
-          <style>
-  .navbar-center {
-    display: flex;
-    justify-content: center;
-  }
-
-  .navbar-nav {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .navbar-nav li {
-    margin: 0 10px;
-  }
-
-  /* What's New timeline */
-  .timeline-scroll {
-    max-height: 360px;
-    overflow-y: auto;
-    margin-top: 20px;
-    padding-right: 12px;
-  }
-
-  .timeline {
-    position: relative;
-    list-style: none;
-    margin: 0;
-    padding: 0 0 0 135px;
-  }
-
-  .timeline::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    bottom: 6px;
-    left: 110px;
-    width: 2px;
-    background-color: #d7d7d7;
-  }
-
-  .timeline li {
-    position: relative;
-    margin-bottom: 24px;
-    min-height: 30px;
-  }
-
-  .timeline li:last-child {
-    margin-bottom: 0;
-  }
-
-  .timeline li::before {
-    content: "";
-    position: absolute;
-    top: 6px;
-    left: -30px;
-    width: 12px;
-    height: 12px;
-    background-color: #ffffff;
-    border: 3px solid #424242;
-    border-radius: 50%;
-    box-sizing: border-box;
-  }
-
-  .tl-date {
-    position: absolute;
-    top: 0;
-    left: -135px;
-    width: 95px;
-    font-size: 13px;
-    font-weight: 700;
-    color: #424242;
-    text-align: right;
-  }
-
-  .timeline p {
-    margin: 0;
-    line-height: 1.6;
-  }
-
-  .timeline a {
-    text-decoration: underline;
-  }
-
-  .timeline-scroll::-webkit-scrollbar {
-    width: 7px;
-  }
-
-  .timeline-scroll::-webkit-scrollbar-thumb {
-    background-color: #bdbdbd;
-    border-radius: 8px;
-  }
-
-  .timeline-scroll::-webkit-scrollbar-track {
-    background-color: #f3f3f3;
-  }
-
-  @media (max-width: 600px) {
-    .timeline {
-      padding-left: 25px;
-    }
-
-    .timeline::before {
-      left: 5px;
-    }
-
-    .timeline li::before {
-      left: -25px;
-    }
-
-    .tl-date {
-      position: static;
-      display: block;
-      width: auto;
-      margin-bottom: 5px;
-      text-align: left;
-    }
-  }
-</style>
-          
-          <div class="card">
+<div class="card">
             <div class="card-block">
               <h2 style="font-weight: bold;margin-bottom: 0px;font-weight: bold;">Working Papers</h2>
               <div class="Vol">
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Job Market Paper: The Role of Access to Community Bank Capital in Place-Based Policies (draft available upon request)</h3>
-                <p>
+                </p>
                   To assist policymakers and economic developers in measuring the effectiveness of using firm-specific
 incentives to attract large manufacturing investments and catalyze broader economic development, I
 study the role of access to community bank capital in catalyzing spillovers from large manufacturing
@@ -403,13 +256,13 @@ between 2010 and 2018 and estimate the impact of these openings on small busines
 and expansion in the local economy, using difference-in-differences designs with multiple control groups.
 The results suggest that community banks drive post-opening increases in small business lending, which
 translates to higher growth rates in small business creation and expansion. Small businesses in complementary industries experience the largest growth, while small businesses that may compete for labor and
-other resources do not. Using a calibrated Quantitiatve Spatial Equilibrium Model, the availability of local community bank credit contributes as much as 25\% of the post-MDP growth in small business establishments. These findings will inform policymakers evaluating which places will benefit from
+other resources do not. Using a calibrated Quantitative Spatial Equilibrium Model, the availability of local community bank credit contributes as much as 25% of the post-MDP growth in small business establishments. These findings will inform policymakers evaluating which places will benefit from
 place-based policies and financial regulators monitoring the consolidation of the banking industry.
       </p>             
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Financial Risks in Flooding: Bank Response to Climate-Induced Natural Disasters</h3>
-                <h4 class="h3 date-title" style="margin-top: 2.5px;color: grey;font-size:12px">Fall 2026</h3>
+                <h4 class="h3 date-title" style="margin-top: 2.5px;color: grey;font-size:12px">Fall 2026</h4>
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Agricultural Management Practices and Water Pollution: An Application to the Maumee River Watershed (with Dr. Yongyang Cai)</h3>
-                <h4 class="h3 date-title" style="margin-top: 2.5px;color: grey;font-size:12px">Winter 2026</h3>
+                <h4 class="h3 date-title" style="margin-top: 2.5px;color: grey;font-size:12px">Winter 2026</h4>
               </div>
             </div>
           </div>
@@ -419,17 +272,17 @@ place-based policies and financial regulators monitoring the consolidation of th
               <h2 style="font-weight: bold;margin-bottom: 0px;font-weight: bold;">Publications/Books</h2>
               <div class="Vol">
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">2019</h3>
-                <p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0313592619300529" title="Link to article - Subsidizing the sun">Subsidizing the sun: The impact of state policies on electricity generated form solar photovoltaic. <em>Economic Analysis and Policy.</em> 2019; 63, 1-10.</a><p>
+                <p><a href="https://www.sciencedirect.com/science/article/abs/pii/S0313592619300529" title="Link to article - Subsidizing the sun">Subsidizing the sun: The impact of state policies on electricity generated form solar photovoltaic. <em>Economic Analysis and Policy.</em> 2019; 63, 1-10.</a></p>
               </div>
               <div class="Vol">
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">2021</h3>
-                <p><a href="https://link.springer.com/article/10.1007/s11293-021-09716-3" title="Link to article - Medical Marijuana">The Political Economy of Medical Marijuana Laws Revisited. <em>Atlantic Economic Journal.</em> 2021; 49, 241–243.</a><p>
-                <p><a href="https://www.scottryanproductions.com/product/myth-or-mayor/" title="Link to book - Myth or Mayor"> <em>Myth or Mayor - The Search for My Family's Legacy.</em> Scott Ryan Productions; 2021.</a><p>
+                <p><a href="https://link.springer.com/article/10.1007/s11293-021-09716-3" title="Link to article - Medical Marijuana">The Political Economy of Medical Marijuana Laws Revisited. <em>Atlantic Economic Journal.</em> 2021; 49, 241–243.</a></p>
+                <p><a href="https://www.scottryanproductions.com/product/myth-or-mayor/" title="Link to book - Myth or Mayor"> <em>Myth or Mayor - The Search for My Family's Legacy.</em> Scott Ryan Productions; 2021.</a></p>
               </div>
               <div class="Vol">
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">2023</h3>
-                <p><a href="https://jrap.scholasticahq.com/article/75437-the-political-economy-of-recreational-marijuana-laws-in-the-u-s-a-spatial-approach" title="Link to article - Recreational Marijuana"> The political economy of recreational marijuana laws in the U.S.: A spatial approach. <em>Journal of Regional Analysis and Policy.</em> 2023; 53, 59-81.</a><p>
-                <p><a href="https://www.tandfonline.com/doi/full/10.1080/00036846.2023.2291097" title="Link to article - Financial impacts of climate change"> Financial impacts of climate change. <em>Applied Economics</em> 2023; 56(58), 8546–8560.</a><p> 
+                <p><a href="https://jrap.scholasticahq.com/article/75437-the-political-economy-of-recreational-marijuana-laws-in-the-u-s-a-spatial-approach" title="Link to article - Recreational Marijuana"> The political economy of recreational marijuana laws in the U.S.: A spatial approach. <em>Journal of Regional Analysis and Policy.</em> 2023; 53, 59-81.</a></p>
+                <p><a href="https://www.tandfonline.com/doi/full/10.1080/00036846.2023.2291097" title="Link to article - Financial impacts of climate change"> Financial impacts of climate change. <em>Applied Economics</em> 2023; 56(58), 8546–8560.</a></p> 
               </div>
             </div>
           </div>
@@ -439,15 +292,15 @@ place-based policies and financial regulators monitoring the consolidation of th
               <h2 style="font-weight: bold;margin-bottom: 0px;">Education</h2>
               <div class="education-experience">
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold">Ohio State University (Columbus, OH)</h3>
-                <h4 class="h3 date-title" style="margin-top: 2.5px;color:#424242">M.S.: Applied Economics</h3>
+                <h4 class="h3 date-title" style="margin-top: 2.5px;color:#424242">M.S.: Applied Economics</h4>
                 <h5 style="color:grey;font-size:12px;margin-top: -5px">August 2022 - May 2024</h5>
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold">John Carroll University (Cleveland, OH)</h3>
-                <h4 class="h3 date-title" style="margin-top: 2.5px;color:#424242">Majors: Economics and Finance</h3>
-                <h5 style="color:grey;font-size:12px;margin-top: -5px">August 2015 - Decemver 2018</h5>
+                <h4 class="h3 date-title" style="margin-top: 2.5px;color:#424242">Majors: Economics and Finance</h4>
+                <h5 style="color:grey;font-size:12px;margin-top: -5px">August 2015 - December 2018</h5>
                   <p>Overall GPA: 3.85 | Major GPAs (Economics & Finance): 3.85</p>
                   <p> Member of JCU Honors Program</p>
                   <p> Dean's list all 7 semesters</p>
-                  <p> Recipient of the Economic Department’s Omicron Delta Epsilon Award, which is awarded to the top student in the junior class<p/>
+                  <p> Recipient of the Economic Department’s Omicron Delta Epsilon Award, which is awarded to the top student in the junior class</p>
                   <p>Invited to join the Jesuit Honor Society (Alpha Sigma Nu) and the Business Honor Society (Beta Gamma Sigma)</p>
               </div>
             </div>
@@ -457,7 +310,7 @@ place-based policies and financial regulators monitoring the consolidation of th
               <h2 style="font-weight: bold;margin-bottom: 0px;">Certifications</h2>
                 <div class="Certifications">
                   <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Certified Business Economist®</h3>
-                  <h4 class="h3 date-title" style="margin-top: 2.5px;;color:#424242;">National Association for Business Economists</h3>
+                  <h4 class="h3 date-title" style="margin-top: 2.5px;color:#424242;">National Association for Business Economics</h4>
                   <h5 style="color:grey;font-size:12px;margin-top: -5px">January 2020</h5>
                 </div>
               </div>
@@ -472,7 +325,7 @@ place-based policies and financial regulators monitoring the consolidation of th
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Structural Modeling</h3>
                 <p>MATLAB, Julia, GAMS</p>
                 <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Data Analysis</h3>
-                <p>Python, R, MS Office Suite,Alteryx</p>
+                <p>Python, R, MS Office Suite, Alteryx</p>
               </div>
             </div>
           </div>
@@ -488,12 +341,12 @@ place-based policies and financial regulators monitoring the consolidation of th
                     <p>Founded the <a href="https://latenightscholarships.com/" title="Link to Late Night Scholarships website">501(c)(3) nonprofit corporation</a> to offer scholarships for high achieving students in Northeast Ohio and coordinate an alumni network/mentoring program for student applicants.</p>
                     <p>Designed the unique online scholarship web-based application and manages fundraising campaigns that collect over $1,500 in annual donations for the organization's scholarship award.</p>
                     <p>Organizes the selection of three annual scholarship recipients by coordinating with 35+ donors to select the top applicants.</p>
-                    <p><img src="./assets/images/Late_Night_FB_Profile.jpg" width=200 heigth = 40 alt=""></p>
+                    <p><img src="./assets/images/Late_Night_FB_Profile.jpg" width="200" height="40" alt=""></p>
                   <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Massillon Girls Flag Football Booster Club</h3>
                   <h4 class="h3 date-title" style="margin-top: 2.5px;color: #424242;">Treasurer</h3>
                   <h5 style="color:grey;font-size:12px;margin-top: -5px">February 2025 - present</h5>
                     <p>Treasurer for the inaugural season of the Massillon High School girl's flag football team.</p>
-                    <p><img src="./assets/images/ff_obie.jpg" width=200 heigth = 40 alt=""></p>
+                    <p><img src="./assets/images/ff_obie.jpg" width="200" height="40" alt=""></p>
                   <h3 class="h3 date-title" style="margin-bottom: 0px;font-weight: bold;">Fayetteville Mafia Press</h3>
                   <h4 class="h3 date-title" style="margin-top: 2.5px;color: #424242;">Financial Analyst</h3>
                   <h5 style="color:grey;font-size:12px;margin-top: -5px">February 2020 - present</h5>
@@ -555,42 +408,31 @@ place-based policies and financial regulators monitoring the consolidation of th
   </div>
 </footer>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     scrollRevelation('.card');
-  });
-</script>
-<!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
+<script type="text/javascript" src="./main.bc58148c.js"></script>
 
-<script>
-  (function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-      (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date(); a = s.createElement(o),
-      m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-  ga('create', 'UA-XXXXX-X', 'auto');
-  ga('send', 'pageview');
-</script>
-
---><script type="text/javascript" src="./main.bc58148c.js"></script></body>
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    const menuButton = document.querySelector(".navbar-toggle");
+    if (typeof scrollRevelation === "function") {
+      scrollRevelation(".card");
+    }
+
+    const menuButton = document.querySelector(".site-menu-toggle");
     const menu = document.getElementById("navbar-collapse-uarr");
 
     if (!menuButton || !menu) {
       return;
     }
 
+    function closeMenu() {
+      menu.classList.remove("is-open");
+      menuButton.setAttribute("aria-expanded", "false");
+      menuButton.setAttribute("aria-label", "Open navigation menu");
+    }
+
     menuButton.addEventListener("click", function () {
       const isOpen = menu.classList.toggle("is-open");
 
-      menuButton.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
-      );
-
+      menuButton.setAttribute("aria-expanded", String(isOpen));
       menuButton.setAttribute(
         "aria-label",
         isOpen ? "Close navigation menu" : "Open navigation menu"
@@ -598,12 +440,21 @@ place-based policies and financial regulators monitoring the consolidation of th
     });
 
     menu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menu.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Open navigation menu");
-      });
+      link.addEventListener("click", closeMenu);
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth >= 768) {
+        closeMenu();
+      }
     });
   });
 </script>
+
+<!--
+  Google Analytics placeholder removed.
+  Add your current analytics script here only if you use one.
+-->
+
+</body>
 </html>
