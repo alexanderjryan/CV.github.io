@@ -46,6 +46,127 @@
   </style>
 </head>
 
+  <style>
+  .navbar-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .navbar-nav li {
+    margin: 0 10px;
+  }
+
+  /* What's New timeline */
+  .timeline-scroll {
+    max-height: 360px;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding-right: 12px;
+  }
+
+  .timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 135px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 110px;
+    width: 2px;
+    background-color: #d7d7d7;
+  }
+
+  .timeline li {
+    position: relative;
+    margin-bottom: 24px;
+    min-height: 30px;
+  }
+
+  .timeline li:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -30px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border: 3px solid #424242;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  .tl-date {
+    position: absolute;
+    top: 0;
+    left: -135px;
+    width: 95px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #424242;
+    text-align: right;
+  }
+
+  .timeline p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .timeline a {
+    text-decoration: underline;
+  }
+
+  .timeline-scroll::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 8px;
+  }
+
+  .timeline-scroll::-webkit-scrollbar-track {
+    background-color: #f3f3f3;
+  }
+
+  @media (max-width: 600px) {
+    .timeline {
+      padding-left: 25px;
+    }
+
+    .timeline::before {
+      left: 5px;
+    }
+
+    .timeline li::before {
+      left: -25px;
+    }
+
+    .tl-date {
+      position: static;
+      display: block;
+      width: auto;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+  }
+</style>
+  
 <body class="">
   <!-- Add your content of header -->
   <div class="background-color-layer"></div>
@@ -125,6 +246,127 @@
             </div>
           </div>
 
+          <style>
+  .navbar-center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .navbar-nav li {
+    margin: 0 10px;
+  }
+
+  /* What's New timeline */
+  .timeline-scroll {
+    max-height: 360px;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding-right: 12px;
+  }
+
+  .timeline {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 135px;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 110px;
+    width: 2px;
+    background-color: #d7d7d7;
+  }
+
+  .timeline li {
+    position: relative;
+    margin-bottom: 24px;
+    min-height: 30px;
+  }
+
+  .timeline li:last-child {
+    margin-bottom: 0;
+  }
+
+  .timeline li::before {
+    content: "";
+    position: absolute;
+    top: 6px;
+    left: -30px;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+    border: 3px solid #424242;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+
+  .tl-date {
+    position: absolute;
+    top: 0;
+    left: -135px;
+    width: 95px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #424242;
+    text-align: right;
+  }
+
+  .timeline p {
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .timeline a {
+    text-decoration: underline;
+  }
+
+  .timeline-scroll::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .timeline-scroll::-webkit-scrollbar-thumb {
+    background-color: #bdbdbd;
+    border-radius: 8px;
+  }
+
+  .timeline-scroll::-webkit-scrollbar-track {
+    background-color: #f3f3f3;
+  }
+
+  @media (max-width: 600px) {
+    .timeline {
+      padding-left: 25px;
+    }
+
+    .timeline::before {
+      left: 5px;
+    }
+
+    .timeline li::before {
+      left: -25px;
+    }
+
+    .tl-date {
+      position: static;
+      display: block;
+      width: auto;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+  }
+</style>
+          
           <div class="card">
             <div class="card-block">
               <h2 style="font-weight: bold;margin-bottom: 0px;font-weight: bold;">Working Papers</h2>
