@@ -57,3 +57,24 @@ body {
   object-fit: contain;
   margin-top: 12px;
 }
+
+/* Center the main navigation on desktop */
+.navbar-center {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-center > li {
+  float: none;
+  margin: 0 10px;
+}
+
+.navbar-center > li > a {
+  display: block;
+}
