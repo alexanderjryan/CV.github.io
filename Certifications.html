@@ -126,8 +126,33 @@
 </footer>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function (event) {
-     scrollRevelation('.card');
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof scrollRevelation === "function") {
+      scrollRevelation(".card");
+    }
+
+    const menuButton = document.querySelector(".site-menu-toggle");
+    const menu = document.getElementById("navbar-collapse-uarr");
+
+    if (!menuButton || !menu) {
+      return;
+    }
+
+    menuButton.addEventListener("click", function () {
+      const isOpen = menu.classList.toggle("is-open");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
+    });
   });
 </script>
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID 
