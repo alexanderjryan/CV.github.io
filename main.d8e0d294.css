@@ -22,7 +22,7 @@ body {
 }
 /* Job market homepage callout */
 .job-market-callout {
-  background: #5f7a3d;
+  background-color: #f4f0df;
   border-left: 6px solid #6f7357;
   padding: 16px 20px;
   margin-bottom: 20px;
@@ -32,7 +32,7 @@ body {
 
 .job-market-label {
   display: inline-block;
-  background: #6f7357;
+  background-color: #6f7357;
   color: #ffffff;
   font-family: Oswald, Helvetica, Arial, sans-serif;
   font-size: 18px;
@@ -94,4 +94,22 @@ body {
     float: none !important;
     margin: 0 10px;
   }
+}
+
+/* Clearly identifiable content links */
+.card p a,
+.card li a {
+  color: #005ea8;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.card p a:hover,
+.card p a:focus,
+.card li a:hover,
+.card li a:focus {
+  color: #003e73;
+  text-decoration-thickness: 2px;
 }
