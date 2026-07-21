@@ -116,7 +116,7 @@ body {
 
 /* What's New timeline */
 .timeline-scroll {
-  max-height: 360px;
+  max-height: 200px;
   overflow-y: auto;
   margin-top: 20px;
   padding-right: 12px;
@@ -210,9 +210,8 @@ body {
 /* Mobile timeline */
 @media (max-width: 600px) {
   .timeline-scroll {
-    max-height: none;
-    overflow-y: visible;
-    padding-right: 0;
+    max-height: 240px;
+    overflow-y: auto;
   }
 
   .timeline {
